@@ -19,6 +19,7 @@ public class UserService {
 		if (userDto.getEmail() != null) {
 			user = userRepo.findByEmail(userDto.getEmail());
 		}
+
 		if (user == null) {
 			User new_user = new User();
 			new_user.setUserName(userDto.getUserName());
@@ -30,9 +31,9 @@ public class UserService {
 			new_user.setLastName(userDto.getLastName());
 			new_user.setPhoneNo(userDto.getPhoneNo());
 			new_user.setPincode(userDto.getPincode());
+			new_user.setRole(userDto.getRole());
 			userRepo.save(new_user);
 			return true;
-
 		}
 		return false;
 	}
